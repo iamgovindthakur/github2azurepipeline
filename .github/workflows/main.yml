@@ -1,0 +1,25 @@
+name: Trigger Azure Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Change this to the branch you want to trigger the pipeline on
+
+jobs:
+  trigger_pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Print Message!
+        run: echo "Triggering Azure Pieline"
+
+      - name: Trigger Azure Pipeline
+        uses: azure/pipelines@v1
+        with:
+          azure-devops-pipeline: 'YourPipelineName'  # Replace with your Azure Pipeline name
+          azure-devops-organization: 'YourAzureDevOpsOrganization'  # Replace with your Azure DevOps organization
+          azure-devops-project: 'YourAzureDevOpsProject'  # Replace with your Azure DevOps project
+          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}  # Replace with your Azure DevOps access token stored in GitHub Secrets
