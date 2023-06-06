@@ -22,7 +22,7 @@ jobs:
           AZURE_DEVOPS_TOKEN: sefyozzyokn4cayds6goc2erpoqwdayffp3brszd77o2l4awqxwa  # Replace with your Azure DevOps access token stored in GitHub Secrets
           AZURE_DEVOPS_ORGANIZATION: gt66932  # Replace with your Azure DevOps organization
           AZURE_DEVOPS_PROJECT: demo  # Replace with your Azure DevOps project
-          AZURE_DEVOPS_PIPELINE: demo (1)  # Replace with your Azure Pipeline name
+          AZURE_DEVOPS_PIPELINE: demo  # Replace with your Azure Pipeline name
         run: |
           curl -X POST \
             -H "Content-Type: application/json" \
