@@ -16,10 +16,15 @@ jobs:
       - name: Print Message!
         run: echo "Triggering Azure Pieline"
 
+    
       - name: Trigger Azure Pipeline
-        uses: azure/pipelines@v1
-        with:
-          azure-devops-pipeline: 'YourPipelineName'  # Replace with your Azure Pipeline name
-          azure-devops-organization: 'YourAzureDevOpsOrganization'  # Replace with your Azure DevOps organization
-          azure-devops-project: 'YourAzureDevOpsProject'  # Replace with your Azure DevOps project
-          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}  # Replace with your Azure DevOps access token stored in GitHub Secrets
+        env:
+          AZURE_DEVOPS_TOKEN: ${{ secrets.AZURE_DEVOPS_TOKEN }}  # Replace with your Azure DevOps access token stored in GitHub Secrets
+          AZURE_DEVOPS_ORGANIZATION: gt66932  # Replace with your Azure DevOps organization
+          AZURE_DEVOPS_PROJECT: demo  # Replace with your Azure DevOps project
+          AZURE_DEVOPS_PIPELINE: demo (1)  # Replace with your Azure Pipeline name
+        run: |
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            -u $AZURE_DEVOPS_TOKEN: \
+            "https://dev.azure.com/$AZURE_DEVOPS_ORGANIZATION/$AZURE_DEVOPS_PROJECT/_apis/pipelines/$AZURE_DEVOPS_PIPELINE/runs?api-version=6.1-preview.1"
