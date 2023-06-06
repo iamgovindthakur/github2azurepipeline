@@ -7,9 +7,16 @@ on:
 
 jobs:
   trigger_pipeline:
-    runs-on: self-hosted  # Replace with the name of your self-hosted runner
+    runs-on: ubuntu-latest
 
     steps:
+    
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Print Message!
+        run: echo "Triggering Azure Pieline"
+        
       - name: Trigger Azure Pipeline
         env:
           AZURE_DEVOPS_TOKEN: sefyozzyokn4cayds6goc2erpoqwdayffp3brszd77o2l4awqxwa  # Replace with your Azure DevOps access token stored in GitHub Secrets
